@@ -20,6 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        string operatorButtonStr;
         public MainWindow()
         {
             InitializeComponent();
@@ -77,13 +78,111 @@ namespace WpfApp1
 
         private void addToDisplay(string number)
         {
-            if (Display.Content.ToString() == "0")
+            if (Display.Text == "0")
             {
-                Display.Content = "";
+                Display.Text = number;
             }
+            else
+            {
+                Display.Text += number;
+            } 
+        }
 
-            Display.Content += number;
-            
+        private void deleteFromDisplay() 
+        {
+            if (!Display.Text.Equals("0"))
+            {
+                string display = Display.Text.ToString();
+                if (display.Length > 1)
+                {
+                    string newDisplay = display.Remove(display.Length - 1);
+                    Display.Text = newDisplay;
+                } 
+                else
+                {
+                    Display.Text = "0";
+                }
+            }
+        }
+        
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            deleteFromDisplay();
+        }
+
+        private void plusButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+
+        }
+
+        private void minusButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+        }
+
+        private void multButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+        }
+
+        private void divButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+        }
+
+        private void powButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+        }
+
+        private void sqrtButton_Click(object sender, RoutedEventArgs e)
+        {
+            operatorButtonStr = Content.ToString();
+        }
+
+        private double calculate(double numero, string operation, double numero2)
+        {
+            double resultado = 0;
+            switch (operation)
+            {
+                case "+":
+                    resultado = numero + numero2;
+                    break;
+
+                case "-":
+                    resultado = numero - numero;
+                    break;
+
+                case "X":
+                    resultado = numero * numero2;
+                    break;
+
+                case "÷":
+                    resultado = numero / numero2;
+                    break;
+
+                case "x²":
+                    resultado = Math.Pow(numero, numero2);
+                    break;
+
+            }
+            return resultado;
+        }
+
+        private double calculate(int numero, string operation)
+        {
+            double resultado = 0;
+            if (operation.Equals("√x"))
+            {
+                resultado = Math.Sqrt(numero);
+            }
+            return resultado;
+        }
+
+        private void cButton_Click(object sender, RoutedEventArgs e)
+        {
+            Display.Text = "0";
         }
     }
 }
