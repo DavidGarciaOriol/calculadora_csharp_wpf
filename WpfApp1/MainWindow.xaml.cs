@@ -20,169 +20,212 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        string previousInput = "";
+
         string operatorButtonStr;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void number0Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonHover(object sender, RoutedEventArgs e)
         {
-            addToDisplay(number0Button.Content.ToString());
+            Button button = (Button)sender;
+            button.Background = new SolidColorBrush(Color.FromRgb(179,179,179));
         }
 
-        private void number1Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLeaveEqual(object sender, RoutedEventArgs e)
         {
-            addToDisplay(number1Button.Content.ToString());
+            Button button = (Button)sender;
+            button.Background = new SolidColorBrush(Color.FromRgb(99, 174, 224));
         }
 
-        private void number2Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLeave(object sender, RoutedEventArgs e)
         {
-            addToDisplay(number2Button.Content.ToString());
+            Button button = (Button)sender;
+            button.Background = new SolidColorBrush(Color.FromRgb(87, 86, 86));
         }
 
-        private void number3Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonLeaveDark(object sender, RoutedEventArgs e)
         {
-            addToDisplay(number3Button.Content.ToString());
+            Button button = (Button)sender;
+            button.Background = new SolidColorBrush(Color.FromRgb(68,68,68));
         }
 
-        private void number4Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            addToDisplay(number4Button.Content.ToString());
+            Button button = (Button) sender;
+
+            string buttonText = button.Content.ToString();
+
+            switch (buttonText)
+            {
+                case "=":
+                    
+                    break;
+                case ",":
+                    
+                    break;
+                case "0":
+                    addToDisplay(buttonText);
+                    break;
+                case "1":
+                    addToDisplay(buttonText);
+                    break;
+                case "2":
+                    addToDisplay(buttonText);
+                    break;
+                case "3":
+                    addToDisplay(buttonText);
+                    break;
+                case "4":
+                    addToDisplay(buttonText);
+                    break;
+                case "5":
+                    addToDisplay(buttonText);
+                    break;
+                case "6":
+                    addToDisplay(buttonText);
+                    break;
+                case "7":
+                    addToDisplay(buttonText);
+                    break;
+                case "8":
+                    addToDisplay(buttonText);
+                    break;
+                case "9":
+                    addToDisplay(buttonText);
+                    break;
+                case "+/-":
+                    if (Display.Text != "0")
+                    {
+                        if (Display.Text.StartsWith("-"))
+                        {
+                            Display.Text = Display.Text.Substring(1);
+                        }
+                        else
+                        {
+                            Display.Text = "-" + Display.Text;
+                        }
+                    }
+                    break;
+                case "⌫":
+                    deleteFromDisplay();
+                    break;
+                case "C":
+                    Display.Text = "0";
+                    break;
+                case "CC":
+                    Display.Text = "0";
+                    break;
+
+                case "+":
+
+                    break;
+                case "-":
+                    break;
+                case "X":
+                    break;
+                case "÷":
+                    break;
+                case "x²":
+                    break;
+                case "√x":
+                    break;
+
+            }
         }
 
-        private void number5Button_Click(object sender, RoutedEventArgs e)
+        private void changePositiveNegative()
         {
-            addToDisplay(number5Button.Content.ToString());
-        }
 
-        private void number6Button_Click(object sender, RoutedEventArgs e)
-        {
-            addToDisplay(number6Button.Content.ToString());
-        }
-
-        private void number7Button_Click(object sender, RoutedEventArgs e)
-        {
-            addToDisplay(number7Button.Content.ToString());
-        }
-
-        private void number8Button_Click(object sender, RoutedEventArgs e)
-        {
-            addToDisplay(number8Button.Content.ToString());
-        }
-
-        private void number9Button_Click(object sender, RoutedEventArgs e)
-        {
-            addToDisplay(number9Button.Content.ToString());
         }
 
         private void addToDisplay(string number)
         {
-            if (Display.Text == "0")
+            if (Display.Text.Equals("0") || Display.Text.Equals("-0"))
             {
-                Display.Text = number;
+                Display.Text = formatNumber(number);
             }
             else
             {
-                Display.Text += number;
+                string currentText = Display.Text.Replace(",", ""); // Quitar comas de separación
+                currentText += number;
+                Display.Text = formatNumber(currentText);
             } 
         }
 
         private void deleteFromDisplay() 
         {
-            if (!Display.Text.Equals("0"))
+            if (!Display.Text.Equals("0") && Display.Text.Length > 0)
             {
-                string display = Display.Text.ToString();
-                if (display.Length > 1)
-                {
-                    string newDisplay = display.Remove(display.Length - 1);
-                    Display.Text = newDisplay;
-                } 
-                else
+                string display = Display.Text;
+                display = display.Replace(",", "");
+                display = display.Remove(display.Length - 1);
+
+                if (display.Length == 0)
                 {
                     Display.Text = "0";
                 }
+                else
+                {
+                    Display.Text = formatNumber(display);
+                }
             }
         }
-        
-        private void backButton_Click(object sender, RoutedEventArgs e)
-        {
-            deleteFromDisplay();
-        }
 
-        private void plusButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-
-        }
-
-        private void minusButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-        }
-
-        private void multButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-        }
-
-        private void divButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-        }
-
-        private void powButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-        }
-
-        private void sqrtButton_Click(object sender, RoutedEventArgs e)
-        {
-            operatorButtonStr = Content.ToString();
-        }
-
-        private double calculate(double numero, string operation, double numero2)
+        private double calculate(double number, string operatorStr, double number2)
         {
             double resultado = 0;
-            switch (operation)
+            switch (operatorStr)
             {
                 case "+":
-                    resultado = numero + numero2;
+                    resultado = number + number2;
                     break;
 
                 case "-":
-                    resultado = numero - numero;
+                    resultado = number - number2;
                     break;
 
                 case "X":
-                    resultado = numero * numero2;
+                    resultado = number * number2;
                     break;
 
                 case "÷":
-                    resultado = numero / numero2;
+                    if (number2 != 0)
+                    {
+                        resultado = number / number2;
+                    } else
+                    {
+                        resultado = double.NaN;
+                    } 
                     break;
 
                 case "x²":
-                    resultado = Math.Pow(numero, numero2);
+                    resultado = Math.Pow(number, number2);
                     break;
-
             }
             return resultado;
         }
 
-        private double calculate(int numero, string operation)
+        private double calculate(int number, string operatorStr)
         {
             double resultado = 0;
-            if (operation.Equals("√x"))
+            if (operatorStr.Equals("√x"))
             {
-                resultado = Math.Sqrt(numero);
+                resultado = Math.Sqrt(number);
             }
             return resultado;
         }
 
-        private void cButton_Click(object sender, RoutedEventArgs e)
+        private string formatNumber(string number)
         {
-            Display.Text = "0";
+            if (double.TryParse(number, out double numericValue))
+            {
+                return string.Format("{0:#,##0.##}", numericValue);
+            }
+            return number;
         }
+
     }
 }

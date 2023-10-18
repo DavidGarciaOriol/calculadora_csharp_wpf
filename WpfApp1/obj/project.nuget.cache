@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "yl8jz0CINlbG2UKlbz7VvLEoObBz6sRk3G7luXZvoFgWKHlj6DUqlVdLVg7lpLNIWsy9eEGCPCR3wOcUkR7T3g==",
+  "dgSpecHash": "r5ajtXQGHxafq4p1AK/8eFzf8ezpbRR8ww5isTvPTdgsgnE9TH1vtHEchvNrjyPgVxwSwosLNuuFj521Rud9iA==",
   "success": true,
-  "projectFilePath": "D:\\ciclot\\DGO\\Visual Studio Projects\\WpfApp1\\WpfApp1\\WpfApp1\\WpfApp1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\usuario\\source\\repos\\DesarrolloInterfaces\\calculadora_csharp_wpf\\WpfApp1\\WpfApp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\usuario\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -5,9 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Calculadora" Height="540" Width="320" MinHeight="540" MinWidth="320">
+        Title="Calculadora" Height="460" Width="360" MinHeight="460" MinWidth="360">
 
-    <Grid x:Name="GridCalculadora" Background="#FF252525">
+  <Window.Resources>
+      <Style x:Key="RoundedButtonStyle" TargetType="Button">
+          <Setter Property="Template">
+              <Setter.Value>
+                  <ControlTemplate TargetType="Button">
+                      <Border CornerRadius="8" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1">
+                          <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                      </Border>
+                  </ControlTemplate>
+              </Setter.Value>
+          </Setter>
+      </Style>
+
+  </Window.Resources>
+
+
+  <Grid x:Name="GridCalculadora" Background="#FF252525">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -18,7 +34,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
 
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,31 +41,32 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="equalButton" Content="=" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="6" BorderBrush="#FFC3C3C3" Background="#FFC3C3C3" FontSize="24"/>
-        <Button x:Name="colonButton" Content="," HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24"/>
-        <Button x:Name="number0Button" Content="0" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number0Button_Click"/>
-        <Button x:Name="plusOrMinusButton" Content="+/-" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24"/>
-        <Button x:Name="plusButton" Content="+" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="5" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="plusButton_Click"/>
-        <Button x:Name="number3Button" Content="3" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number3Button_Click"/>
-        <Button x:Name="number2Button" Content="2" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number2Button_Click"/>
-        <Button x:Name="number1Button" Content="1" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0"  Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number1Button_Click"/>
-        <Button x:Name="minusButton" Content="-" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="4" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="minusButton_Click"/>
-        <Button x:Name="number6Button" Content="6" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number6Button_Click"/>
-        <Button x:Name="number5Button" Content="5" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number5Button_Click"/>
-        <Button x:Name="number4Button" Content="4" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number4Button_Click"/>
-        <Button x:Name="multButton" Content="X" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="3" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="multButton_Click"/>
-        <Button x:Name="number9Button" Content="9" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number9Button_Click"/>
-        <Button x:Name="number8Button" Content="8" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number8Button_Click"/>
-        <Button x:Name="number7Button" Content="7" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="number7Button_Click"/>
-        <Button x:Name="divButton" Content="÷" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="divButton_Click" />
-        <Button x:Name="sqrtButton" Content="√x" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="sqrtButton_Click"/>
-        <Button x:Name="powButton" Content="x²" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="powButton_Click"/>
-        <Button x:Name="fracButton" Content="½" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24"/>
-        <Button x:Name="backButton" Content="⌫" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="backButton_Click"/>
-        <Button x:Name="cButton" Content="C" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="cButton_Click"/>
-        <Button x:Name="ceButton" Content="CE" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24"/>
-        <Button x:Name="percentButton" Content="%" HorizontalAlignment="Stretch" Margin="3"  VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24"/>
-        <TextBox IsReadOnly="True" x:Name="Display" Text="0" HorizontalAlignment="Right" Margin="5"  VerticalAlignment="Stretch" Width="Auto" FontSize="40" Height="Auto" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Foreground="White" FontWeight="Normal" FontStyle="Normal" Background="{x:Null}" BorderBrush="{x:Null}" />
+    
+        <Button x:Name="equalButton" Style="{StaticResource RoundedButtonStyle}" Content="=" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="6" BorderBrush="#FFC3C3C3" Background="#FF63aee0" Foreground="Black" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveEqual"/>
+        <Button x:Name="colonButton" Style="{StaticResource RoundedButtonStyle}" Content="," HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number0Button" Style="{StaticResource RoundedButtonStyle}" Content="0" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="plusOrMinusButton" Style="{StaticResource RoundedButtonStyle}" Content="+/-" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="6" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="plusButton" Style="{StaticResource RoundedButtonStyle}" Content="+" HorizontalAlignment="Stretch" Margin="1"  VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="5" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="number3Button" Style="{StaticResource RoundedButtonStyle}" Content="3" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number2Button" Style="{StaticResource RoundedButtonStyle}" Content="2" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number1Button" Style="{StaticResource RoundedButtonStyle}" Content="1" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0"  Grid.Row="5" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="minusButton" Style="{StaticResource RoundedButtonStyle}" Content="-" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="4" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="number6Button" Style="{StaticResource RoundedButtonStyle}" Content="6" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number5Button" Style="{StaticResource RoundedButtonStyle}" Content="5" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number4Button" Style="{StaticResource RoundedButtonStyle}" Content="4" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="4" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="multButton" Style="{StaticResource RoundedButtonStyle}" Content="x" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="3" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="number9Button" Style="{StaticResource RoundedButtonStyle}" Content="9" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number8Button" Style="{StaticResource RoundedButtonStyle}" Content="8" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="number7Button" Style="{StaticResource RoundedButtonStyle}" Content="7" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="3" BorderBrush="#FF575656" Background="#FF575656" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeave"/>
+        <Button x:Name="divButton" Style="{StaticResource RoundedButtonStyle}" Content="÷" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="sqrtButton" Style="{StaticResource RoundedButtonStyle}" Content="√x" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="powButton" Style="{StaticResource RoundedButtonStyle}" Content="x²" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="fracButton" Style="{StaticResource RoundedButtonStyle}" Content="½" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="2" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="backButton" Style="{StaticResource RoundedButtonStyle}" Content="⌫" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="cButton" Style="{StaticResource RoundedButtonStyle}" Content="C" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="2" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="ceButton" Style="{StaticResource RoundedButtonStyle}" Content="CE" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <Button x:Name="percentButton" Style="{StaticResource RoundedButtonStyle}" Content="%" HorizontalAlignment="Stretch" Margin="1" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1" Background="#FF444444" BorderBrush="#FF444444" Foreground="White" FontSize="24" Click="Button_Click" MouseEnter="ButtonHover" MouseLeave="ButtonLeaveDark"/>
+        <TextBox IsReadOnly="True" x:Name="Display" Text="0" HorizontalAlignment="Right" Margin="5" VerticalAlignment="Stretch" Width="Auto" FontSize="40" Height="Auto" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Foreground="White" FontWeight="Normal" FontStyle="Normal" Background="{x:Null}" BorderBrush="{x:Null}"/>
         
     </Grid>
 </Window>
